@@ -2,6 +2,7 @@ require('dotenv').config();
 
 let express = require('express');
 let app = express();
+let bodyParser = require('body-parser');
 
 // solves the problem with submitting the tasks
 const dns = require('dns');
@@ -20,6 +21,10 @@ app.get("/now", function(req, res, next) {
 }, function(req, res) {
     res.json({time: req.time});
 });
+
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(bodyParser.json());
 
 // console.log("Hello World");
 
