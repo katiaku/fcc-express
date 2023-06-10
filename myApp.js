@@ -1,6 +1,15 @@
 let express = require('express');
 let app = express();
 
+const dns = require('dns');
+dns.setDefaultResultOrder('ipv4first');
+
+app.use("/", function(req, res, next) {
+    let str = req.method + " " + req.path + " - " + req.ip;
+    console.log(str);
+    next();
+});
+
 require('dotenv').config();
 
 // console.log("Hello World");
