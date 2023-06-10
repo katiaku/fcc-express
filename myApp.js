@@ -61,4 +61,12 @@ app.get("/name", function(req, res) {
     });
 });
 
+app.post("/name", function(req, res) {
+    let firstName = req.body.first;
+    let lastName = req.body.last;
+    res.json({
+        name: `${firstName} ${lastName}`
+    });
+});
+
 module.exports = app;
